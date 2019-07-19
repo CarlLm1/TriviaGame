@@ -1,5 +1,21 @@
-// JS //
+/* // JS //
+
+The commented JavaScript makes the timer not work, I was able to get the timer to work but the other coding doesn't seem to want to function correctly.
+
+
 $(document).ready(function () {
+
+
+
+
+
+
+
+
+
+
+
+
 
     // Variables
     var number = 60;
@@ -8,36 +24,7 @@ $(document).ready(function () {
     var wrongCount = 0;
     var unanswered = 0;
 
-    // Timer function
-    function countdownTimer() {
-        intervalId = setInterval(decrement, 1000);
-    }
 
-    // Decrement timer function
-    function decrement() {
-        number--;
-        $('#timer').html(" " + number + " " + "seconds");
-        if (number === 1) {
-            $('#timer').html(" " + number + " " + "second");
-        }
-        else if (number === 0) {
-            stop();
-            hide();
-            displaySummary();
-        }
-    }
-
-    //Clear timer function
-    function stop() {
-        clearInterval(intervalId);
-    }
-
-    //Hide text function
-    function hide() {
-        $('#countdown').hide();
-        $('.trivia').hide();
-        $('#done').hide();
-    }
 
     // Display summary function
     function displaySummary() {
@@ -49,12 +36,6 @@ $(document).ready(function () {
     }
 
 
-    //Start Button click
-    $('#start').on('click', function () {
-        $('#start').hide();
-        countdownTimer();
-    });
-
     //Done Button click
     $('#done').on('click', function () {
         $('#start').hide();
@@ -62,10 +43,28 @@ $(document).ready(function () {
         displaySummary();
     });
 
-    //Radio button
+    //Radio
     $('input[type=radio]').on('change', function () {
         correctCount = $('input[value=correct]:checked').length;
         wrongCount = $('input[value=wrong]:checked').length;
         unanswered = (8 - (correctCount + wrongCount));
     });
-});
+}); */
+
+var secondsDown = 60;
+	 var timeIntervalUp = setInterval(function(){startTimer()}, 1000);
+
+    function startTimer(){ 
+            document.getElementById("countDown").innerHTML = "Time Remaining: " + secondsDown;
+            secondsDown--;
+			
+             if (secondsDown == 0) {
+                clearInterval(timeIntervalUp);
+                endTimer();
+                reload();
+            }
+        }
+		
+    function endTimer() {   
+        document.getElementById("countDown").innerHTML = "Time ran out";
+    }
